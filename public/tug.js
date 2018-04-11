@@ -47,7 +47,7 @@ var dragging = null;
 var mouseX = null;
 var mouseY = null;
 
-var MoI = .0000003;
+var MoI = .000001;
 var mass = 30;
 setInterval(function() {
    if (dragging != null) {
