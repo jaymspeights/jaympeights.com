@@ -47,16 +47,17 @@ var dragging = null;
 var mouseX = null;
 var mouseY = null;
 
-var MoI = .000001;
+var MoI = .000005;
 var mass = 100;
 setInterval(function() {
    if (dragging != null) {
       let angle = Math.atan2(mouseY-dragging.center.y, mouseX-dragging.center.x) - dragging.rtc;
       let tugX = dragging.center.x+dragging.magnitude*Math.cos(dragging.rtc);
       let tugY = dragging.center.y+dragging.magnitude*Math.sin(dragging.rtc);
+      console.log(mouseX, mouseY);
       let magnitude = Math.hypot(mouseX - tugX, mouseY - tugY);
       let direction = Math.atan2(mouseY-tugY, mouseX-tugX);
-      let radius = dragging.magnitude;
+      let radius = Math.sqrt(dragging.magnitude);
       let new_rot = Math.sin(angle)*MoI*radius*magnitude;
       let rot = 'rotate('+(dragging.rot+new_rot)+'rad)';
       dragging.rot += new_rot;
@@ -111,8 +112,10 @@ function tuggable(elem) {
      let box = elem.getBoundingClientRect();
      obj.center = {x:box.x+box.width/2, y:box.y+box.height/2};
      obj.offset = getOffset(elem);
-     let x = e.targetTouches[0].pageX-obj.center.x;
-     let y = e.targetTouches[0].pageY-obj.center.y;
+     mouseX = e.touches[0].pageX;
+     mouseY = e.touches[0].pageY;
+     let x = e.touches[0].pageX-obj.center.x;
+     let y = e.touches[0].pageY-obj.center.y;
      obj.rtc = Math.atan2(y, x);
      obj.magnitude = Math.hypot(x, y);
      dragging = obj;
