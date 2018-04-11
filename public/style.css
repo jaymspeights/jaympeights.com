@@ -10,9 +10,23 @@ body {
 		box-shadow: 4px 6px 8px rgba(0,0,0,.5);
 	}
 }
+#sticker {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	left: 15px;
+	top: 5px;
+	user-drag: none;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
 .content {
 	min-height: 75vh;
 	max-width: 600px;
+	min-width: 300px;
 	padding: 15px;
 	margin: 0 auto;
 	box-shadow: 2px 3px 4px rgba(0,0,0,.5);
