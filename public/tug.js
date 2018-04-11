@@ -10,11 +10,14 @@ window.onload = function () {
   document.addEventListener('mouseup', (e) => {
      dragging = null;
   });
-  document.addEventListener('touchmove', (e) => {
-     mouseX=e.clientX;
-     mouseY=e.clientY;
+  document.body.addEventListener('touchmove', (e) => {
+    if (e.touches.length < 1) return;
+    e.stopPropagation();
+     mouseX=e.touches[0].pageX;
+     mouseY=e.touches[0].pageY;
   });
   document.addEventListener('touchend', (e) => {
+    e.stopPropagation();
      dragging = null;
   });
 }
@@ -104,12 +107,12 @@ function tuggable(elem) {
      dragging = obj;
   });
   elem.addEventListener('touchstart', (e) => {
-    console.log("touch start");
+     e.stopPropagation();
      let box = elem.getBoundingClientRect();
      obj.center = {x:box.x+box.width/2, y:box.y+box.height/2};
      obj.offset = getOffset(elem);
-     let x = e.clientX-obj.center.x;
-     let y = e.clientY-obj.center.y;
+     let x = e.targetTouches[0].pageX-obj.center.x;
+     let y = e.targetTouches[0].pageY-obj.center.y;
      obj.rtc = Math.atan2(y, x);
      obj.magnitude = Math.hypot(x, y);
      dragging = obj;
