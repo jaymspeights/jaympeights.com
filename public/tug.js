@@ -8,6 +8,8 @@ window.onload = function () {
      mouseY=e.clientY;
   });
   document.addEventListener('mouseup', (e) => {
+    if (dragging)
+      e.stopPropagation();
      dragging = null;
   });
   document.body.addEventListener('touchmove', (e) => {
