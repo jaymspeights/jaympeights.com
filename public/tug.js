@@ -47,17 +47,16 @@ var dragging = null;
 var mouseX = null;
 var mouseY = null;
 
-var MoI = .000005;
-var mass = 100;
+var MoI = .0000003;
+var mass = 30;
 setInterval(function() {
    if (dragging != null) {
       let angle = Math.atan2(mouseY-dragging.center.y, mouseX-dragging.center.x) - dragging.rtc;
       let tugX = dragging.center.x+dragging.magnitude*Math.cos(dragging.rtc);
       let tugY = dragging.center.y+dragging.magnitude*Math.sin(dragging.rtc);
-      console.log(mouseX, mouseY);
       let magnitude = Math.hypot(mouseX - tugX, mouseY - tugY);
       let direction = Math.atan2(mouseY-tugY, mouseX-tugX);
-      let radius = Math.sqrt(dragging.magnitude);
+      let radius = dragging.magnitude;
       let new_rot = Math.sin(angle)*MoI*radius*magnitude;
       let rot = 'rotate('+(dragging.rot+new_rot)+'rad)';
       dragging.rot += new_rot;
@@ -77,7 +76,7 @@ setInterval(function() {
       dragging.offset.x += forceX;
       dragging.offset.y += forceY;
    }
-}, 10);
+}, 30);
 
 function getRotation(obj) {
     let style = window.getComputedStyle(obj);
