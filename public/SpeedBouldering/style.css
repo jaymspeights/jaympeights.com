@@ -1,0 +1,33 @@
+body {
+	margin: 0;
+	padding: 30px 40px;
+	background-color: #404040;
+	font-family: arial;
+}
+@media (orientation: portrait) {
+	body .content {
+		max-width: 100%;
+		box-shadow: 4px 6px 8px rgba(0,0,0,.5);
+	}
+}
+.content {
+	min-height: 75vh;
+	max-width: 600px;
+	min-width: 300px;
+	padding: 15px;
+	margin: 0 auto;
+	box-shadow: 2px 3px 4px rgba(0,0,0,.5);
+	background-color: white;
+}
+.header * {
+	text-align: center;
+}
+.header h1 {
+	font-family: Herculanum, Fantasy;
+}
+.header {
+	box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+	background-color: #f9f9ff;
+	padding: 20px;
+	margin-bottom: 50px;
+}
