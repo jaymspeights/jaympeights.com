@@ -12,16 +12,6 @@ window.onload = function () {
       e.stopPropagation();
      dragging = null;
   });
-  document.body.addEventListener('touchmove', (e) => {
-    if (e.touches.length < 1) return;
-    e.stopPropagation();
-     mouseX=e.touches[0].pageX;
-     mouseY=e.touches[0].pageY;
-  });
-  document.addEventListener('touchend', (e) => {
-    e.stopPropagation();
-     dragging = null;
-  });
 }
 
 function getOffset(elem) {
@@ -104,19 +94,6 @@ function tuggable(elem) {
      obj.offset = getOffset(elem);
      let x = e.clientX-obj.center.x;
      let y = e.clientY-obj.center.y;
-     obj.rtc = Math.atan2(y, x);
-     obj.magnitude = Math.hypot(x, y);
-     dragging = obj;
-  });
-  elem.addEventListener('touchstart', (e) => {
-     e.stopPropagation();
-     let box = elem.getBoundingClientRect();
-     obj.center = {x:box.x+box.width/2, y:box.y+box.height/2};
-     obj.offset = getOffset(elem);
-     mouseX = e.touches[0].pageX;
-     mouseY = e.touches[0].pageY;
-     let x = e.touches[0].pageX-obj.center.x;
-     let y = e.touches[0].pageY-obj.center.y;
      obj.rtc = Math.atan2(y, x);
      obj.magnitude = Math.hypot(x, y);
      dragging = obj;

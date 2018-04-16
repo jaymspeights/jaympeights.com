@@ -43,9 +43,9 @@ body {
 	background-color: #f9f9ff;
 	padding: 20px;
 	margin-bottom: 50px;
-	-ms-transform: rotate(5deg); /* IE 9 */
-	-webkit-transform: rotate(5deg); /* Safari */
-	transform: rotate(5deg);
+	-ms-transform: rotate(var(--tilt-amt)); /* IE 9 */
+	-webkit-transform: rotate(var(--tilt-amt)); /* Safari */
+	transform: rotate(var(--tilt-amt));
 	z-index: 2;
 }
 .project * {
